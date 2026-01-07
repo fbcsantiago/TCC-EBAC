@@ -1,0 +1,20 @@
+[
+    {
+        "nomeProduto": "Ajax Full-Zip Sweatshirt",
+        "tamanho": "L",
+        "cor": "Red",
+        "quantidade": 1 
+    },
+    {
+        "nomeProduto": "Apollo Running Short",
+        "tamanho": "36",
+        "cor": "Black",
+        "quantidade": 5
+    },
+    {
+        "nomeProduto": "Aero Daily Fitness Tee",
+        "tamanho": "M",
+        "cor": "Brown",
+        "quantidade": 4
+    }
+]
