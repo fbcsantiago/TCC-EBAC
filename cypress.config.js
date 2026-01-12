@@ -1,11 +1,12 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
-  projectId:'pthzhp',
   e2e: {
     setupNodeEvents(on, config) {
-     return require('./cypress/plugins/index.js')(on, config)
+      // plugins podem ser configurados aqui se necessário
+      return config
     },
-    baseUrl: 'http://lojaebac.ebaconline.art.br/',
+     baseUrl: 'http://lojaebac.ebaconline.art.br/',
   },
-});
+})
+
