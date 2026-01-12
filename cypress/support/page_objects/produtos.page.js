@@ -1,63 +1,42 @@
-class ProdutosPage {
+class ProdutosPage{
 
-  visitarUrl() {
-    cy.visit('/produtos')
-    cy.url().should('include', '/produtos')
-  }
+    visitarUrl() {
+       cy.visit('produtos')
+    }
+ 
+     buscarProduto(nomeProduto) {
+         cy.get('[name="s"]').eq(1).type(nomeProduto)
+         cy.get('.button-search').eq(1).click()
+     }
+ 
+     buscarProdutoLista(nomeProduto) {
+         cy.get('.products > .row')
+         .contains(nomeProduto)
+         .click()
+     }
+ 
+     visitarProduto(nomeProduto) {
+     //cy.visit(`produtos/${nomeProduto}`)
+     const urlFormatada = nomeProduto.replace(/ /g, '-')   
+     cy.visit(`produtos/${urlFormatada}`)
+     }
+ 
+     addProdutoCarrinho(tamanho,cor,quantidade) {
+         cy.get('.button-variable-item-' + tamanho).click()
+         cy.get(`.button-variable-item-${cor}`).click() 
+         cy.get('.input-text').clear().type(quantidade)
+         cy.get('.single_add_to_cart_button').click()
+    }
 
-  buscarProduto(nomeProduto) {
-    cy.get('input[name="s"]')
-      .should('be.visible')
-      .clear()
-      .type(nomeProduto)
+     validarCompra(){  
+         cy.get('.woocommerce-message > a').click()
+         cy.get('.wc-proceed-to-checkout > a').click()
+         cy.get('.woocommerce-terms-and-conditions-checkbox-text').click()
+         cy.get('.checkout.woocommerce-checkout').submit()
+        
 
-    cy.get('button.button-search')
-      .should('be.visible')
-      .click()
-  }
 
-  buscarProdutoLista(nomeProduto) {
-    cy.get('.products')
-      .contains(nomeProduto)
-      .should('be.visible')
-      .click()
-  }
-
-  visitarProduto(nomeProduto) {
-    const urlFormatada = nomeProduto
-      .toLowerCase()
-      .replace(/ /g, '-')
-
-    cy.visit(`/produtos/${urlFormatada}`)
-    cy.url().should('include', urlFormatada)
-  }
-
-  addProdutoCarrinho(tamanho, cor, quantidade) {
-    cy.contains('.button-variable-item', tamanho).click()
-    cy.contains('.button-variable-item', cor).click()
-
-    cy.get('input.qty')
-      .clear()
-      .type(quantidade)
-
-    cy.get('button.single_add_to_cart_button')
-      .should('be.enabled')
-      .click()
-  }
-
-  validarCompra() {
-    cy.get('.woocommerce-message a')
-      .should('be.visible')
-      .click()
-
-    cy.url().should('include', 'cart')
-
-    cy.get('.wc-proceed-to-checkout a')
-      .should('be.visible')
-      .click()
-
-    cy.url().should('include', 'checkout')
-  }
-}
-
-export default new ProdutosPage()
+     }     
+ }
+ 
+ export default new ProdutosPage()

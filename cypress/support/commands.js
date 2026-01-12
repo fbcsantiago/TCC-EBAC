@@ -5,7 +5,7 @@ Cypress.Commands.add('login', (usuario, senha) => {
         cy.get('#password').type(user.senha, { log: false })
         cy.get('.woocommerce-form > .button').click()
         cy.get('.page-title').should('contain', 'Minha conta')
-        cy.get('.woocommerce-MyAccount-content').should('be.visible', 'Olá, aluno_ebac');
+        cy.get('.woocommerce-MyAccount-content').should('be.visible', 'Olá, usuario-7302');
     })
  })
 

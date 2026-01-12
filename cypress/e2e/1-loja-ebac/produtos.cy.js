@@ -16,20 +16,20 @@ describe('funcionalidade: Produtos', () => {
     });
 
     it('Deve buscar um produto com sucesso', () => {
-        let produto = 'Apollo Running Short'
+        let produto = 'Arcadio Gym Short'
         produtosPage.buscarProduto(produto)
         cy.get('.product_title').should('contain', produto)
     });
 
     it('Deve visitar a página do produto', () => {
-        produtosPage.visitarProduto('Apollo Running Short')
-        cy.get('.product_title').should('contain', 'Apollo Running Short')
+        produtosPage.visitarProduto('Arcadio Gym Short')
+        cy.get('.product_title').should('contain', 'Arcadio Gym Short')
     });
 
     it('Deve adicionar produto ao carrinho', () => {
         let qtd = 4
         produtosPage.buscarProduto('Aero Daily Fitness Tee')
-        produtosPage.addProdutoCarrinho('M', 'Brown', qtd)
+        produtosPage.addProdutoCarrinho('S', 'yellow', qtd)
 
         cy.get('.woocommerce-message').should('contain', qtd + ' × “Aero Daily Fitness Tee” foram adicionados no seu carrinho.')
 
