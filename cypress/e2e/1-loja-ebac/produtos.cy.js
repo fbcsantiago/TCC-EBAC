@@ -27,7 +27,7 @@ describe('funcionalidade: Produtos', () => {
     });
 
     it('Deve adicionar produto ao carrinho', () => {
-        let qtd = 4
+        let qtd = 2
         produtosPage.buscarProduto('Aero Daily Fitness Tee')
         produtosPage.addProdutoCarrinho('S', 'Yellow', qtd)
 
