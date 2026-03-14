@@ -8,6 +8,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "test:api": "cypress run --spec \"cypress/e2e/1-loja-ebac/Teste.API/**\"",
+    "test:api:cupons": "cypress run --spec \"cypress/e2e/1-loja-ebac/Teste.API/cupons.api.cy.js\"",
     "report:merge": "mochawesome-merge cypress/reports/mochawesome*.json -o cypress/reports/report.json",
     "report:generate": "cd cypress/reports && marge report.json --reportDir . --inline --reportFilename report",
     "report": "npm run test:api && npm run report:merge && npm run report:generate"
