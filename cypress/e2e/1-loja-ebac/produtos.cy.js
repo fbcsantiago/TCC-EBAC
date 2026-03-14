@@ -46,6 +46,11 @@ describe('funcionalidade: Produtos', () => {
         })
     });
     it('Deve validar minha compra', () => {
+        cy.fixture('perfil').then(perfil => {
+            cy.detalhesConta(perfil.nome, perfil.sobrenome, perfil.nomeExibicao)
+            produtosPage.visitarUrl()
+        })
+
         cy.fixture('produtos').then(dados => {
             produtosPage.buscarProduto(dados[2].nomeProduto)
             produtosPage.addProdutoCarrinho(
@@ -53,7 +58,9 @@ describe('funcionalidade: Produtos', () => {
                 dados[2].cor,
                 dados[2].quantidade)
             cy.get('.woocommerce-message').should('contain', dados[2].nomeProduto)
-            produtosPage.validarCompra()
+            cy.fixture('perfil').then(perfil => {
+                produtosPage.validarCompra(perfil.checkout)
+            })
             cy.get('.woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received').should('contain' , 'Obrigado. Seu pedido foi recebido.')
         })
 

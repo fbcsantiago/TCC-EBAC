@@ -5,7 +5,7 @@ describe('Login', () => {
     it('Deve fazer login com sucesso', () => {
         cy.request({
             method: 'POST',
-            url: 'login',
+            url: `${Cypress.env('apiUrl')}/login`,
             body: {
                 "email": "fulano@qa.com",
                 "password": "teste" 

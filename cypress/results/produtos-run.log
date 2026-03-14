@@ -1,0 +1,60 @@
+
+
+DevTools listening on ws://127.0.0.1:61953/devtools/browser/0fbc4aab-a2ac-460b-87e1-e0f38e18f31c
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        13.6.0                                                                         │
+  │ Browser:        Electron 114 (headless)                                                        │
+  │ Node Version:   v23.6.1 (C:\Program Files\nodejs\node.exe)                                     │
+  │ Specs:          1 found (produtos.cy.js)                                                       │
+  │ Searched:       C:\Fernanda\repositorio\TCC-EBAC\cypress\e2e\1-loja-ebac\produtos.cy.js        │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  produtos.cy.js                                                                  (1 of 1)
+
+
+  funcionalidade: Produtos
+    √ Deve selecionar um produto da lista (10476ms)
+    √ Deve buscar um produto com sucesso (6125ms)
+    √ Deve visitar a página do produto (6826ms)
+    √ Deve adicionar produto ao carrinho (9485ms)
+    √ Deve adicionar produto ao carrinho buscando da massa de dados (8644ms)
+    √ Deve validar minha compra (24711ms)
+
+
+  6 passing (1m)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        6                                                                                │
+  │ Passing:      6                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     1 minute, 6 seconds                                                              │
+  │ Spec Ran:     produtos.cy.js                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ √  produtos.cy.js                           01:06        6        6        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    √  All specs passed!                        01:06        6        6        -        -        -  
+

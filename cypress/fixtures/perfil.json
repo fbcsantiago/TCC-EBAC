@@ -1,4 +1,20 @@
 {
-  "usuario": "usuario@ebacshop.com.br",
-  "senha": "Ebac123"
+  "usuario": "Teste01@ebac.com.br",
+  "senha": "Ebac123@",
+  "nome": "Fernanda",
+  "sobrenome": "Santiago",
+  "nomeExibicao": "fernanda.santiago",
+  "checkout": {
+    "nome": "Fernanda",
+    "sobrenome": "Santiago",
+    "empresa": "EBAC",
+    "pais": "Brasil",
+    "endereco": "Rua das Flores, 100",
+    "complemento": "Apto 12",
+    "cidade": "Sao Paulo",
+    "estado": "SP",
+    "cep": "01310100",
+    "telefone": "11999998888",
+    "email": "Teste01@ebac.com.br"
+  }
 }

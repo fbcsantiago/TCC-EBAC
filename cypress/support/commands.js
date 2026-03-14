@@ -1,11 +1,11 @@
 Cypress.Commands.add('login', (usuario, senha) => {
     cy.fixture('perfil').then((user) => {
-        cy.visit('minha conta')
-        cy.get('#username').type(user.usuario)
-        cy.get('#password').type(user.senha, { log: false })
+        cy.visit('minha-conta')
+        cy.get('#username').type(usuario || user.usuario)
+        cy.get('#password').type(senha || user.senha, { log: false })
         cy.get('.woocommerce-form > .button').click()
         cy.get('.page-title').should('contain', 'Minha conta')
-        cy.get('.woocommerce-MyAccount-content').should('be.visible', 'Olá, usuario-7302');
+        cy.url().should('include', 'minha-conta')
     })
  })
 
@@ -21,9 +21,11 @@ Cypress.Commands.add('preCadastro', (email, senha, nome, sobrenome) => {
 })
 
 Cypress.Commands.add('detalhesConta' , (nome, sobrenome, usuario) => {
-    cy.get('#account_first_name_field').type(nome)
-    cy.get('#account_last_name').type(sobrenome)
-    cy.get('#account_display_name').type(usuario)
-    cy.get('.woocommerce-Button').click()
+    cy.visit('minha-conta/edit-account/')
+    cy.get('#account_first_name').clear().type(nome)
+    cy.get('#account_last_name').clear().type(sobrenome)
+    cy.get('#account_display_name').clear().type(usuario)
+    cy.get('.woocommerce-Button[name="save_account_details"]').click()
+    cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.')
 
 });

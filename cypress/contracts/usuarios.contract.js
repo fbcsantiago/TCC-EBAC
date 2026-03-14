@@ -1,4 +1,4 @@
-const Joi = require ('joi')
+import Joi from 'joi'
 
 const usuariosSchema = Joi.object({
     quantidade: Joi.number(), 

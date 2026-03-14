@@ -1,7 +1,7 @@
 Cypress.Commands.add('token', (email, senha) => {
     cy.request({
         method: 'POST',
-        url: 'login',
+        url: `${Cypress.env('apiUrl')}/login`,
         body: {
             "email": email,
             "password": senha 
@@ -15,7 +15,7 @@ Cypress.Commands.add('token', (email, senha) => {
  Cypress.Commands.add('cadastrarProduto' , (token, produto, preco, descricao, quantidade) =>{
     cy.request({
         method: 'POST', 
-        url: 'produtos',
+        url: `${Cypress.env('apiUrl')}/produtos`,
         headers: {authorization: token}, 
         body: {
             "nome": produto,
@@ -30,7 +30,7 @@ Cypress.Commands.add('token', (email, senha) => {
  Cypress.Commands.add('cadastrarUsuario' , (usuario, email ) =>{
     cy.request({
         method: 'POST', 
-        url: 'usuarios', 
+        url: `${Cypress.env('apiUrl')}/usuarios`, 
         body: {
             "nome": usuario,
             "email": email,
