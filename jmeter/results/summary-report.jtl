@@ -1,0 +1,2 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1773692767579,412,1 - GET /minha-conta/ (Pagina de Login),200,OK,TG - Login US-0002 (20 usuarios) 1-1,text,true,,177476,351,1,1,http://lojaebac.ebaconline.art.br/minha-conta/,315,0,113
