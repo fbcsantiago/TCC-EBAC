@@ -9,8 +9,6 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variaveis do Plano de Teste">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG - Login US-0002 (20 usuarios)">
@@ -27,7 +25,7 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
           <intProp name="HTTPSampler.connect_timeout">5000</intProp>
           <intProp name="HTTPSampler.response_timeout">10000</intProp>
           <stringProp name="HTTPSampler.domain">lojaebac.ebaconline.art.br</stringProp>
@@ -46,7 +44,7 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">User-Agent</stringProp>
@@ -63,7 +61,7 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set - Massa de Dados (usuarios.csv)" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set - Massa de Dados (usuarios.csv)">
           <stringProp name="filename">usuarios.csv</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="variableNames">usuario,senha</stringProp>
@@ -75,7 +73,7 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1 - GET /minha-conta/ (Pagina de Login)" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1 - GET /minha-conta/ (Pagina de Login)">
           <stringProp name="HTTPSampler.path">/minha-conta/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -121,12 +119,12 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Think Time - 1 a 3 segundos" enabled="true">
+        <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Think Time - 1 a 3 segundos">
           <stringProp name="ConstantTimer.delay">1000</stringProp>
           <stringProp name="RandomTimer.range">2000</stringProp>
         </UniformRandomTimer>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2 - POST /minha-conta/ (Efetuar Login)" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2 - POST /minha-conta/ (Efetuar Login)">
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
           <stringProp name="HTTPSampler.path">/minha-conta/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -195,7 +193,7 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -232,7 +230,7 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -269,7 +267,7 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
           <stringProp name="filename">results/summary-report.jtl</stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -307,13 +305,13 @@ Configuracoes: 20 usuarios, ramp-up 20s, duracao 2 minutos</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller - Template de Gravacao" enabled="true">
+      <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller - Template de Gravacao">
         <stringProp name="TestPlan.comments">Use este controlador junto com o HTTP(S) Test Script Recorder (porta 8888).
 Configure o proxy do navegador para: localhost:8888
 Em seguida pressione START no recorder para gravar o fluxo de login.</stringProp>
       </RecordingController>
       <hashTree/>
-      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder" enabled="true">
+      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder">
         <stringProp name="ProxyControlGui.port">8888</stringProp>
         <collectionProp name="ProxyControlGui.exclude_list"/>
         <collectionProp name="ProxyControlGui.include_list"/>
