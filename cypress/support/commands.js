@@ -1,11 +1,19 @@
-Cypress.Commands.add('login', (usuario, senha) => {
+Cypress.Commands.add('login', (usuario, senha, options = {}) => {
     cy.fixture('perfil').then((user) => {
-        cy.visit('minha-conta')
-        cy.get('#username').type(usuario || user.usuario)
-        cy.get('#password').type(senha || user.senha, { log: false })
+        const { validarSucesso = true, visitarPagina = true } = options;
+
+        if (visitarPagina) {
+            cy.visit('minha-conta')
+        }
+
+        cy.get('#username').clear().type(usuario || user.usuario)
+        cy.get('#password').clear().type(senha || user.senha, { log: false })
         cy.get('.woocommerce-form > .button').click()
-        cy.get('.page-title').should('contain', 'Minha conta')
-        cy.url().should('include', 'minha-conta')
+
+        if (validarSucesso) {
+            cy.get('.page-title').should('contain', 'Minha conta')
+            cy.url().should('include', 'minha-conta')
+        }
     })
  })
 
@@ -28,4 +36,57 @@ Cypress.Commands.add('detalhesConta' , (nome, sobrenome, usuario) => {
     cy.get('.woocommerce-Button[name="save_account_details"]').click()
     cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.')
 
+ })
+
+Cypress.Commands.add('limparCarrinho', () => {
+    cy.visit('/carrinho')
+
+    function removerCupons() {
+        cy.get('body').then($body => {
+            if ($body.find('a.woocommerce-remove-coupon').length) {
+                cy.get('a.woocommerce-remove-coupon').first().click({ force: true })
+                cy.wait(800)
+                removerCupons()
+            }
+        })
+    }
+
+    function removerPrimeiroItem() {
+        cy.get('body').then($body => {
+            if ($body.find('.remove').length) {
+                cy.get('.remove').first().click({force: true})
+                cy.wait(800)
+                removerPrimeiroItem()
+            }
+        })
+    }
+
+    removerCupons()
+    removerPrimeiroItem()
+})
+
+Cypress.Commands.add('criarCupomApiUnico', (baseCode, amount, discount_type, description) => {
+    const code = `${baseCode}_${Date.now()}`;
+    cy.request({
+        method: 'POST',
+        url: '/wp-json/wc/v3/coupons',
+        headers: {
+            Authorization: 'Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy',
+            'Content-Type': 'application/json'
+        },
+        body: {
+            code,
+            amount,
+            discount_type,
+            description
+        },
+        failOnStatusCode: false
+    }).then((response) => {
+        if (response.status === 201) {
+            Cypress.env('cupom_gerado', code);
+            return code;
+        } else {
+            throw new Error('Erro ao criar cupom único: ' + JSON.stringify(response.body));
+        }
+    });
 });

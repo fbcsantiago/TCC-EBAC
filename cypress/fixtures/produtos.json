@@ -3,7 +3,7 @@
         "nomeProduto": "Ajax Full-Zip Sweatshirt",
         "tamanho": "L",
         "cor": "Red",
-        "quantidade": 1 
+        "quantidade": 3
     },
     {
         "nomeProduto": "Arcadio Gym Short",
@@ -12,9 +12,9 @@
         "quantidade": 5
     },
     {
-        "nomeProduto": "Aero Daily Fitness Tee",
-        "tamanho": "S",
-        "cor": "Yellow",
-        "quantidade": 2
+        "nomeProduto": "Lando Gym Jacket",
+        "tamanho": "M",
+        "cor": "Gray",
+        "quantidade": 10
     }
 ]
