@@ -6,8 +6,20 @@ Cypress.Commands.add('login', (usuario, senha, options = {}) => {
             cy.visit('minha-conta')
         }
 
-        cy.get('#username').clear().type(usuario || user.usuario)
-        cy.get('#password').clear().type(senha || user.senha, { log: false })
+        cy.get('body').then(($body) => {
+            if (!$body.find('#username').length) {
+                if ($body.find('.woocommerce-MyAccount-navigation-link--customer-logout a').length) {
+                    cy.get('.woocommerce-MyAccount-navigation-link--customer-logout a').click()
+                } else {
+                    cy.clearCookies()
+                    cy.clearLocalStorage()
+                    cy.visit('minha-conta')
+                }
+            }
+        })
+
+        cy.get('#username', { timeout: 10000 }).clear().type(usuario || user.usuario)
+        cy.get('#password', { timeout: 10000 }).clear().type(senha || user.senha, { log: false })
         cy.get('.woocommerce-form > .button').click()
 
         if (validarSucesso) {
